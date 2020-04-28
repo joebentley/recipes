@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @recipe.name %>
+</p>
+
+<h2>Ingredients</h2>
+<ul>
+<% @recipe.ingredients.each do |ingredient| %>
+  <li>
+    <%= ingredient.quantity %> <%= ingredient.name %>
+    <%= link_to 'Edit', edit_recipe_ingredient_path(ingredient) %>
+    <%= link_to 'Delete', recipe_ingredient_path(ingredient), method: :delete %>
+  </li>
+<% end %>
+</ul>
+
+<h2>Add ingredient:</h2>
+<%= form_with(model: [ @recipe, @recipe.ingredients.build ]) do |form| %>
+  <p>
+    <%= form.label :quantity %><br>
+    <%= form.text_field :quantity %>
+  </p>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<br><br>
+<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<%= link_to 'Back', recipes_path %>

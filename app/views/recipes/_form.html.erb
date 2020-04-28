@@ -1,0 +1,12 @@
+<%= form_with(model: recipe, local: true) do |form| %>
+  <%= render 'shared/form_errors', item: recipe, item_name: "recipe" %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
