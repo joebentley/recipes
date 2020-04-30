@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  root 'recipe_lists#index'
+
+  resources :recipe_lists do
+    member do
+      delete :remove_recipe, path: "remove_recipe/:recipe_id"
+    end
+  end
+
   resources :recipes do
     resources :ingredients
   end

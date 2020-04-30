@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @recipe_list.name %>
+</p>
+
+<h2>Recipes</h2>
+<ul>
+<% @recipe_list.recipes.each do |recipe| %>
+  <li>
+    <%= recipe.name %>
+    <%= link_to 'Remove', remove_recipe_recipe_list_path(@recipe_list, recipe_id: recipe),
+                          method: :delete %>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to 'Edit', edit_recipe_list_path(@recipe_list) %> |
+<%= link_to 'Back', recipe_lists_path %>

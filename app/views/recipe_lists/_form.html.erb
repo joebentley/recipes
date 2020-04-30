@@ -1,0 +1,34 @@
+<%= form_with(model: recipe_list, local: true) do |form| %>
+  <% if recipe_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(recipe_list.errors.count, "error") %> prohibited this recipe_list from being saved:</h2>
+
+      <ul>
+        <% recipe_list.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <% Recipe.all.each do |recipe|
+         is_checked = recipe_list.recipes.exists? recipe.id
+    %>
+      <div class="chosen-recipe">
+        <label><%= recipe.name %>
+          <%= check_box_tag "recipe_ids[]", recipe.id, is_checked %>
+        </label>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

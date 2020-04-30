@@ -19,12 +19,10 @@
 <h2>Add ingredient:</h2>
 <%= form_with(model: [ @recipe, @recipe.ingredients.build ]) do |form| %>
   <p>
-    <%= form.label :quantity %><br>
-    <%= form.text_field :quantity %>
+    <%= form.label :quantity %><%= form.text_field :quantity %>
   </p>
   <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
+    <%= form.label :name %><%= form.text_field :name %>
   </p>
   <p>
     <%= form.submit %>
