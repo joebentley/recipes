@@ -7,17 +7,17 @@
 
 <h2>Ingredients</h2>
 <ul>
-<% @recipe.ingredients.each do |ingredient| %>
+<% @recipe.items.each do |item| %>
   <li>
-    <%= ingredient.quantity %> <%= ingredient.name %>
-    <%= link_to 'Edit', edit_recipe_ingredient_path(ingredient) %>
-    <%= link_to 'Delete', recipe_ingredient_path(ingredient), method: :delete %>
+    <%= item.quantity %> <%= item.name %>
+    <%= link_to 'Edit', edit_recipe_item_path(@recipe, item) %>
+    <%= link_to 'Delete', recipe_item_path(@recipe, item), method: :delete %>
   </li>
 <% end %>
 </ul>
 
 <h2>Add ingredient:</h2>
-<%= form_with(model: [ @recipe, @recipe.ingredients.build ]) do |form| %>
+<%= form_with(model: [ @recipe, @recipe.items.build ]) do |form| %>
   <p>
     <%= form.label :quantity %><%= form.text_field :quantity %>
   </p>
@@ -27,6 +27,14 @@
   <p>
     <%= form.submit %>
   </p>
+<% end %>
+
+<h2>Add multiple ingredients</h2>
+<p>One per line, quantity and name separated by # (e.g. "1 tsp # sugar")</p>
+<%= form_with(url: create_multiple_recipe_items_path(@recipe),
+              method: :post) do %>
+  <%= text_area_tag :items %><br>
+  <%= submit_tag "Submit" %>
 <% end %>
 
 <br><br>

@@ -24,6 +24,7 @@
         <label><%= recipe.name %>
           <%= check_box_tag "recipe_ids[]", recipe.id, is_checked %>
         </label>
+        <%= link_to 'Goto', recipe_path(recipe), data: { confirm: 'Are you sure? (You will lose unsaved edits)' }  %>
       </div>
     <% end %>
   </div>

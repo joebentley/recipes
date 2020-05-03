@@ -16,5 +16,17 @@
 <% end %>
 </ul>
 
+<h2>Ingredients</h2>
+<% @recipe_list.recipes.each do |recipe| %>
+  <h3><%= recipe.name %></h3>
+  <ol>
+  <% recipe.items.each do |item| %>
+    <li>
+      <%= item.quantity %> <%= item.name %>
+    </li>
+  <% end %>
+  </ol>
+<% end %>
+
 <%= link_to 'Edit', edit_recipe_list_path(@recipe_list) %> |
 <%= link_to 'Back', recipe_lists_path %>

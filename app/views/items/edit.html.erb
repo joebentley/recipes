@@ -1,5 +1,5 @@
-<%= form_with(model: @ingredient, url: recipe_ingredient_path(@ingredient)) do |form| %>
-  <%= render 'shared/form_errors', item: @ingredient, item_name: "ingredient" %>
+<%= form_with(model: @item, url: recipe_item_path(@item)) do |form| %>
+  <%= render 'shared/form_errors', item: @item, item_name: "item" %>
 
   <div class="field">
     <%= form.label :quantity %>

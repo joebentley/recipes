@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   end
 
   resources :recipes do
-    resources :ingredients
+    resources :items do
+      collection do
+        post :create_multiple, path: "create_multiple"
+      end
+    end
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
