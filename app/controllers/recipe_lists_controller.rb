@@ -25,6 +25,7 @@ class RecipeListsController < ApplicationController
   # POST /recipe_lists.json
   def create
     @recipe_list = RecipeList.new(recipe_list_params)
+    @recipe_list.recipe_ids = params[:recipe_ids]
 
     respond_to do |format|
       if @recipe_list.save
